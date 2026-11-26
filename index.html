@@ -177,7 +177,7 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
     <div>
       <p class="eyebrow">LIBRERÍA</p>
       <h1>Iconografía</h1>
-      <p class="sub" id="sub">5 subsistemas · 40 iconos | 3 variables light - bold - solid</p>
+      <p class="sub" id="sub">5 subsistemas | 40 iconos | 3 variables: light - bold - solid</p>
     </div>
     <div class="controls">
       <label class="search">
@@ -309,7 +309,7 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
   /* ---------- datos ---------- */
   fetch('icons.json').then(function(r){return r.json()}).then(function(list){
     S.icons=list;
-    $('#sub').textContent=CATS.length+' subsistemas · '+list.length+' iconos | 3 variables light - bold - solid';
+    $('#sub').textContent=CATS.length+' subsistemas | '+list.length+' iconos | 3 variables: light - bold - solid';
     buildChips(); render(); fromHash();
   }).catch(function(){
     $('#grid').innerHTML='<p class="empty">No se pudieron cargar los iconos. Recargá la página.</p>';
