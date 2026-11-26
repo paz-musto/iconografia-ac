@@ -30,8 +30,11 @@ body{background:var(--bg);color:var(--on-bg);font-family:var(--display);font-wei
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .wrap{max-width:1180px;margin:0 auto;padding:40px 20px 80px}
-.brand{display:flex;justify-content:flex-end;margin:0 0 28px}
-.brand img{display:block;height:32px;width:auto;max-width:100%}
+.site-header{background:#EB0028}
+.site-header .in{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;justify-content:flex-end;align-items:center}
+.site-header img{display:block;height:32px;width:auto;max-width:100%}
+.site-footer{background:#DBDBDB}
+.site-footer .in{max-width:1180px;margin:0 auto;padding:20px}
 
 /* Cabecera */
 .top{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:flex-end;justify-content:space-between}
@@ -110,7 +113,7 @@ input[type=range]::-moz-range-progress{height:4px;border-radius:4px;background:v
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-9px;border-radius:50%;background:var(--surface);border:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.35)}
 input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--surface);border:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .ticks{position:relative;height:22px;margin-top:4px}
-.ticks button{position:absolute;top:0;border:0;background:transparent;padding:2px 4px;font-size:var(--p3);color:var(--muted);font-variant-numeric:tabular-nums}
+.ticks button{position:absolute;top:0;border:0;background:transparent;padding:2px 1px;font-size:var(--p3);color:var(--muted);font-variant-numeric:tabular-nums}
 .ticks button[aria-pressed="true"]{color:var(--primario-500);font-weight:600}
 .colorrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;color:var(--muted);font-size:var(--p2)}
 .colorrow input[type=color]{width:30px;height:30px;padding:0;border:1px solid var(--line);border-radius:50%;background:none;cursor:pointer}
@@ -121,7 +124,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .colorrow small{flex-basis:100%;font-size:var(--p3)}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .btn{display:flex;align-items:center;justify-content:center;gap:10px;height:45px;padding:0 16px;border:1px solid transparent;border-radius:50px;font-size:var(--cta);font-weight:500}
-.btn.primary{background:var(--primario-500);color:var(--neutro-50)}
+.btn.primary{grid-column:1/-1;background:var(--primario-500);color:var(--neutro-50)}
 .btn.primary:hover{background:var(--primario-600)}
 .btn.outline{background:transparent;border-color:var(--primario-500);color:var(--primario-500)}
 .btn.outline:hover{background:var(--primario-50)}
@@ -148,12 +151,12 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
 
 /* Mobile 390 (≤767): H1 24, CTA 16, modal como hoja inferior */
 /* créditos */
-.credits{width:926px;max-width:100%;flex-shrink:0;margin:48px 0 0;color:#FFF;font-family:"Work Sans",sans-serif;font-size:10px;font-style:normal;font-weight:400;line-height:24px}
+.credits{width:926px;max-width:100%;flex-shrink:0;margin:0;color:#292929;font-family:"Work Sans",sans-serif;font-size:10px;font-style:normal;font-weight:400;line-height:24px}
 @media (max-width:767px){
   :root{--h1:24px;--cta:16px}
   .about{grid-template-columns:1fr;gap:40px;margin-top:56px}
   .stats dt{min-width:64px}
-  .brand img{height:26px}
+  .site-header img{height:26px}
   .scrim{padding:0;align-items:flex-end}
   .modal{grid-template-columns:1fr;gap:24px;padding:64px 20px 28px;border-radius:24px 24px 0 0;max-height:94%}
   .stage{max-width:360px}
@@ -168,8 +171,8 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
 </style>
 </head>
 <body>
+<header class="site-header"><div class="in"><img src="logo.svg" alt="Assist Card" width="119" height="33"></div></header>
 <div class="wrap">
-  <div class="brand"><img src="logo.png" alt="DGUX | Assist Card" width="186" height="32"></div>
   <header class="top">
     <div>
       <p class="eyebrow">LIBRERÍA</p>
@@ -210,8 +213,8 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
       </dl>
     </aside>
   </section>
-  <p class="credits">Ideado y diseñado por Dani Parreira y Paz Musto para Assist Card.</p>
 </div>
+<footer class="site-footer"><div class="in"><p class="credits">Ideado y diseñado por Dani Parreira y Paz Musto para Assist Card.</p></div></footer>
 
 <div class="scrim" id="scrim">
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
@@ -244,7 +247,7 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
         <div class="mini"><svg id="mini" viewBox="0 0 16 16" fill="none" aria-hidden="true"></svg></div>
         <div class="sizebox">
           <div class="sizehead"><label for="size">Tamaño</label><output id="sizeOut" for="size">24 px</output></div>
-          <input type="range" id="size" min="16" max="128" step="1" value="24">
+          <input type="range" id="size" min="0" max="900" step="1" value="0">
           <div class="ticks" id="ticks"></div>
         </div>
       </div>
@@ -262,7 +265,6 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
       </div>
       <div class="actions">
         <button class="btn primary" id="copySvg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>Copiar SVG</button>
-        <button class="btn outline" id="copyJsx"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>Copiar JSX</button>
         <button class="btn soft" id="dlSvg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>Descargar SVG</button>
         <button class="btn soft" id="dlPng"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-8 8"/></svg>Descargar PNG</button>
       </div>
@@ -292,7 +294,9 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
     bold:{label:'Bold',note:function(i){return i.exc?'Trazo 0,8 px (ajuste óptico)':'Trazo 1 px'}},
     solid:{label:'Solid',note:function(){return 'Relleno'}}
   };
-  var TICKS=[16,32,48,64,128];
+  var TICKS=[16,32,48,64,128,256,320,512,640,800];
+  function posToSize(p){var n=TICKS.length-1,k=Math.min(Math.floor(p/100),n-1),t=(p-k*100)/100;return Math.round(TICKS[k]+(TICKS[k+1]-TICKS[k])*t)}
+  function sizeToPos(sz){var n=TICKS.length-1;for(var k=0;k<n;k++){if(sz<=TICKS[k+1]){return Math.round(k*100+(sz-TICKS[k])/(TICKS[k+1]-TICKS[k])*100)}}return n*100}
   var S={icons:[],variant:'bold',cat:'all',q:'',cur:null,size:24,color:'#292929',tab:'svg'};
   var dl=null, lastFocus=null, toastT=null;
   var $=function(s){return document.querySelector(s)};
@@ -414,7 +418,7 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
     var mini=$('#mini'); mini.innerHTML=i[v]; mini.style.color=S.color;
     var px=Math.min(S.size,96); mini.setAttribute('width',px); mini.setAttribute('height',px);
     $('#sizeOut').textContent=S.size+' px';
-    var r=$('#size'); r.value=S.size; r.style.setProperty('--p',((S.size-16)/112*100)+'%');
+    var r=$('#size'),pos=sizeToPos(S.size); if(document.activeElement!==r) r.value=pos; r.style.setProperty('--p',(pos/900*100)+'%');
     document.querySelectorAll('#ticks button').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.v===S.size))});
     $('#colorOut').textContent=S.color.toUpperCase();
     $('#color').value=S.color;
@@ -423,13 +427,12 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
   }
   (function(){
     var h=''; TICKS.forEach(function(t,k){
-      var tr=k===0?'translateX(0)':(k===TICKS.length-1?'translateX(-100%)':'translateX(-50%)');
-      h+='<button data-v="'+t+'" style="left:'+((t-16)/112*100)+'%;transform:'+tr+'">'+t+'</button>';
+      h+='<button data-v="'+t+'" style="left:calc(11px + (100% - 22px) * '+(k/(TICKS.length-1))+');transform:translateX(-50%)">'+t+'</button>';
     });
     $('#ticks').innerHTML=h;
   })();
   $('#ticks').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;S.size=+b.dataset.v;fill()});
-  $('#size').addEventListener('input',function(e){S.size=+e.target.value;fill()});
+  $('#size').addEventListener('input',function(e){S.size=posToSize(+e.target.value);fill()});
   $('#color').addEventListener('input',function(e){S.color=e.target.value;fill()});
   $('#swatches').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;S.color=b.dataset.c;fill()});
   $('#mSeg').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;setVariant(b.dataset.v)});
@@ -500,7 +503,6 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
   }
   function current(){return {i:S.cur,v:S.variant,size:S.size}}
   $('#copySvg').addEventListener('click',function(){var c=current();copyText(svgCode(c.i,c.v,c.size),'SVG copiado')});
-  $('#copyJsx').addEventListener('click',function(){var c=current();copyText(jsxCode(c.i,c.v,c.size),'JSX copiado')});
   $('#dlSvg').addEventListener('click',function(){var c=current();saveFile(c.i.slug+'-'+c.v+'.svg',svgCode(c.i,c.v,c.size)+'\n')});
   $('#dlPng').addEventListener('click',function(){
     var c=current();
