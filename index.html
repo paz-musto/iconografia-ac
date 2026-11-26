@@ -271,7 +271,6 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
       <div>
         <div class="tabs" role="tablist" id="tabs">
           <button role="tab" aria-selected="true" data-tab="svg">Código SVG</button>
-          <button role="tab" aria-selected="false" data-tab="jsx">Código JSX</button>
         </div>
         <pre class="code" id="code" tabindex="0"></pre>
       </div>
@@ -386,12 +385,6 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
     return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">\n'+
       els(i[v]).map(function(e){return '  '+e}).join('\n')+'\n</svg>';
   }
-  function jsxCode(i,v,size){
-    var camel=function(s){return s.replace(/\b(stroke|fill|clip)-([a-z]+)(-[a-z]+)?=/g,function(m){return m.replace(/-([a-z])/g,function(_,c){return c.toUpperCase()})})};
-    return 'export const '+pascal(i.slug)+VARS[v].label+' = ({ size = '+size+', ...props }) => (\n'+
-      '  <svg width={size} height={size} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>\n'+
-      els(i[v]).map(function(e){return '    '+camel(e)}).join('\n')+'\n  </svg>\n);';
-  }
 
   /* ---------- modal ---------- */
   function openIcon(slug,push){
@@ -423,7 +416,7 @@ pre.code{margin:0;max-height:168px;overflow:auto;padding:14px 16px;border:1px so
     $('#colorOut').textContent=S.color.toUpperCase();
     $('#color').value=S.color;
     document.querySelectorAll('#swatches button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.c.toLowerCase()===S.color.toLowerCase()))});
-    $('#code').textContent=S.tab==='svg'?svgCode(i,v,S.size):jsxCode(i,v,S.size);
+    $('#code').textContent=svgCode(i,v,S.size);
   }
   (function(){
     var h=''; TICKS.forEach(function(t,k){
